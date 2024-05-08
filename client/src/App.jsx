@@ -2,7 +2,40 @@ import { useState } from 'react';
 import './styles/App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+    console.log(`username=${e.target.value}`);
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+    console.log(`password=${e.target.value}`);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(`username=${username}`);
+    console.log(`password=${password}`);
+    console.log({
+      username: username,
+      password: password,
+    });
+    const response = await fetch('http://localhost:3000/signup', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+    console.log(await response.json());
+  };
 
   return (
     <>
