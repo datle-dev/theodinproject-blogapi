@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const router = express.Router();
 
+require('dotenv').config();
+
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
@@ -34,7 +36,7 @@ router.post('/login', async (req, res, next) => {
         if (error) return next(error);
 
         const body = { _id: user._id, username: user.username };
-        const token = jwt.sign({ user: body }, 'secret');
+        const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
         return res.json({ token });
       });
     } catch (error) {
