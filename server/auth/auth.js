@@ -60,4 +60,4 @@ const tokenStrategy = new JWTStrategy(opts, tokenCallback);
 
 passport.use('signup', signupStrategy);
 passport.use('login', loginStrategy);
-passport.use('jwttest', tokenStrategy);
+passport.use(tokenStrategy);

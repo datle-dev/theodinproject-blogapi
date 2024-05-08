@@ -41,7 +41,7 @@ app.use('/posts', postsRouter);
 app.use('/users', usersRouter);
 app.use(
   '/secure',
-  passport.authenticate('jwttest', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   secureRouter,
 );
 
