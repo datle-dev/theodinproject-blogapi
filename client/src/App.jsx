@@ -70,6 +70,11 @@ function App() {
           >
             Sign Up
           </button>
+          <h1 className="text-xl font-bold">Form Input States</h1>
+          <p>username: {username}</p>
+          <p>password: {password}</p>
+          <h1 className="text-xl font-bold">Response JSON</h1>
+          <p>{JSON.stringify(apiResponse)}</p>
         </form>
       </div>
     </>
