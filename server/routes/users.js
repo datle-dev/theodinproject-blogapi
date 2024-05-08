@@ -5,7 +5,7 @@ const router = express.Router();
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    res.send('Users');
+    res.json({ message: 'Users' });
   }),
 );
 
