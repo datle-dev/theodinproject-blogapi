@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const BlogpostSchema = new mongoose.Schema({
+const PostSchema = new mongoose.Schema({
   username: { type: String, required: true },
   title: { type: String, required: true },
   body: { type: String, required: true },
@@ -9,4 +9,4 @@ const BlogpostSchema = new mongoose.Schema({
   draft: { type: Boolean, required: true },
 });
 
-module.exports = mongoose.model('Blogpost', BlogpostSchema);
+module.exports = mongoose.model('Post', PostSchema);
