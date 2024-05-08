@@ -1,11 +1,13 @@
 const createError = require('http-errors');
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 require('dotenv').config();
+require('./auth/auth');
 
 const indexRouter = require('./routes/index');
 const authorRouter = require('./routes/authors');
@@ -39,6 +41,7 @@ app.use('/posts', postsRouter);
 app.use('/users', usersRouter);
 app.use(
   '/secure',
+  passport.authenticate('jwttest', { session: false }),
   secureRouter,
 );
 
