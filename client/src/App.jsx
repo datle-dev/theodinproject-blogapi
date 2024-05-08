@@ -4,6 +4,7 @@ import './styles/App.css';
 function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [apiResponse, setApiResponse] = useState({});
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -17,13 +18,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`username=${username}`);
-    console.log(`password=${password}`);
-    console.log({
-      username: username,
-      password: password,
-    });
-    const response = await fetch('http://localhost:3000/signup', {
+    fetch('http://localhost:3000/signup', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -33,8 +28,12 @@ function App() {
         username: username,
         password: password,
       }),
-    });
-    console.log(await response.json());
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setApiResponse(data);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
