@@ -5,16 +5,27 @@ import LoginForm from './LoginForm';
 import SecureRoute from './SecureRoute';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(() => {
+    if (localStorage.getItem('jwtblog') !== null) {
+      return JSON.parse(localStorage.getItem('jwtblog')).username;
+    } else {
+      return null;
+    }
+  });
 
   return (
     <>
-      <SignupForm />
-      <LoginForm />
-      {isLoading ? (
-        <p>Loading...</p>
+      {user !== null ? (
+        <div>
+          <p>Welcome, {user}!</p>
+          <SecureRoute />
+        </div>
       ) : (
-        <SecureRoute toggleLoading={setIsLoading} />
+        <div>
+          <p>You&apos;re not logged in</p>
+          <SignupForm />
+          <LoginForm toggleUser={setUser} />
+        </div>
       )}
     </>
   );

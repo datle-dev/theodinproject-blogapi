@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-export default function LoginForm() {
+export default function LoginForm({ toggleUser }) {
   const [apiResponse, setApiResponse] = useState({});
 
   const { register, handleSubmit } = useForm({ mode: 'onBlur' });
@@ -21,7 +21,8 @@ export default function LoginForm() {
       .then((res) => res.json())
       .then((resData) => {
         setApiResponse(resData);
-        localStorage.setItem('jwtblog', JSON.stringify(resData.token));
+        localStorage.setItem('jwtblog', JSON.stringify(resData));
+        toggleUser(resData.username);
       })
       .catch((err) => console.error(err));
   };
