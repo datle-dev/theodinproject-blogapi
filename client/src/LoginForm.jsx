@@ -21,7 +21,7 @@ export default function LoginForm() {
       .then((res) => res.json())
       .then((resData) => {
         setApiResponse(resData);
-        localStorage.setItem('jwtblog', resData.token);
+        localStorage.setItem('jwtblog', JSON.stringify(resData.token));
       })
       .catch((err) => console.error(err));
   };
