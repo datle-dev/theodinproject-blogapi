@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './styles/App.css';
-import './SignupForm';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import SecureRoute from './SecureRoute';
