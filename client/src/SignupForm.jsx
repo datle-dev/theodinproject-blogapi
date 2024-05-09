@@ -37,12 +37,12 @@ export default function SignupForm() {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-4 rounded"
         >
-          <label htmlFor="username" className="font-bold">
+          <label htmlFor="usernamesignup" className="font-bold">
             Username
           </label>
           <input
-            name="username"
-            id="username"
+            name="usernamesignup"
+            id="usernamesignup"
             type="text"
             placeholder="Username"
             maxLength="20"
@@ -65,12 +65,12 @@ export default function SignupForm() {
             className="border border-solid border-gray-300 rounded"
           />
           <span>{errors.username && errors.username.message}</span>
-          <label htmlFor="password" className="font-bold">
+          <label htmlFor="passwordsignup" className="font-bold">
             Password
           </label>
           <input
-            name="password"
-            id="password"
+            name="passwordsignup"
+            id="passwordsignup"
             type="password"
             placeholder="Password"
             maxLength="20"

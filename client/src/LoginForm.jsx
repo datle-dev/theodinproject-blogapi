@@ -34,24 +34,24 @@ export default function LoginForm() {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-4 rounded"
         >
-          <label htmlFor="username" className="font-bold">
+          <label htmlFor="usernamelogin" className="font-bold">
             Username
           </label>
           <input
-            name="username"
-            id="username"
+            name="usernamelogin"
+            id="usernamelogin"
             type="text"
             placeholder="Username"
             maxLength="20"
             {...register('username')}
             className="border border-solid border-gray-300 rounded"
           />
-          <label htmlFor="password" className="font-bold">
+          <label htmlFor="passwordlogin" className="font-bold">
             Password
           </label>
           <input
-            name="password"
-            id="password"
+            name="passwordlogin"
+            id="passwordlogin"
             type="password"
             placeholder="Password"
             maxLength="20"
