@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { UserContext } from './App';
+import Markdown from 'react-markdown';
 
 export default function UserPosts () {
   const [isPostsLoading, setIsPostsLoading] = useState(true);
@@ -23,11 +24,17 @@ export default function UserPosts () {
       .catch((err) => console.error(err));
   });
 
+  
   if (isPostsLoading) {
     return <p>Loading...</p>;
   } else {
     return (
       <>
+        <h1>Mapped Posts</h1>
+        {posts.posts.map((post) => {
+          return <Markdown>{post.text}</Markdown>;
+        })}
+        <h2>JSON Response</h2>
         {JSON.stringify(posts)}
       </>
     );
