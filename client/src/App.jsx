@@ -2,7 +2,6 @@ import { useState, createContext } from 'react';
 import './styles/App.css';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
-import SecureRoute from './SecureRoute';
 import CreatePost from './CreatePost';
 
 import { Status } from './constants/status';
@@ -43,7 +42,6 @@ function App() {
       <div>
         <UserContext.Provider value={user}>
           <p>Welcome, {user}!</p>
-          <SecureRoute />
           <CreatePost />
           <button
             type="button"
