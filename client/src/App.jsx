@@ -28,9 +28,19 @@ function App() {
     setStatus(Status.VISITOR);
   };
 
-  return (
-    <>
-      {user !== null ? (
+  if (status === Status.VISITOR) {
+    return (
+      <div>
+        <StatusContext.Provider value={{ status, setStatus }}>
+          <p>You&apos;re not logged in</p>
+          <SignupForm />
+          <LoginForm toggleUser={setUser} />
+        </StatusContext.Provider>
+      </div>
+    );
+  } else if (status === Status.USER_HOME) {
+    return (
+      <div>
         <UserContext.Provider value={user}>
           <p>Welcome, {user}!</p>
           <SecureRoute />
@@ -43,15 +53,9 @@ function App() {
             Log Out
           </button>
         </UserContext.Provider>
-      ) : (
-        <div>
-          <p>You&apos;re not logged in</p>
-          <SignupForm />
-          <LoginForm toggleUser={setUser} />
-        </div>
-      )}
-    </>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
