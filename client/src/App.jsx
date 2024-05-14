@@ -5,13 +5,19 @@ import LoginForm from './LoginForm';
 import SecureRoute from './SecureRoute';
 import CreatePost from './CreatePost';
 
+import { Status } from './constants/status';
+
 export const UserContext = createContext(null);
+export const StatusContext = createContext(null);
 
 function App() {
+  const [status, setStatus] = useState(Status.VISITOR);
   const [user, setUser] = useState(() => {
     if (localStorage.getItem('jwtblog') !== null) {
+      setStatus(Status.USER_HOME);
       return JSON.parse(localStorage.getItem('jwtblog')).username;
     } else {
+      setStatus(Status.VISITOR);
       return null;
     }
   });
@@ -19,6 +25,7 @@ function App() {
   const logout = () => {
     localStorage.removeItem('jwtblog');
     setUser(null);
+    setStatus(Status.VISITOR);
   };
 
   return (
