@@ -43,7 +43,6 @@ function App() {
       <div>
         <UserContext.Provider value={user}>
           <p>Welcome, {user}!</p>
-          <SecureRoute />
           <CreatePost />
           <button
             type="button"
