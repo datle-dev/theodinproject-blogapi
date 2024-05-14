@@ -2,6 +2,7 @@ import { useState, createContext } from 'react';
 import './styles/App.css';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
+import UserPosts from './UserPosts';
 import CreatePost from './CreatePost';
 
 import { Status } from './constants/status';
@@ -49,6 +50,9 @@ function App() {
     return (
       <div>
         <p>Welcome, {user}!</p>
+        <StatusContext.Provider value={{ status, setStatus }}>
+          <UserPosts />
+        </StatusContext.Provider>
         <button
           type="button"
           onClick={onClickCreatePost}
