@@ -30,9 +30,9 @@ function App() {
   if (status === Status.VISITOR) {
     return (
       <div>
+        <p>You&apos;re not logged in</p>
+        <SignupForm />
         <StatusContext.Provider value={{ status, setStatus }}>
-          <p>You&apos;re not logged in</p>
-          <SignupForm />
           <LoginForm toggleUser={setUser} />
         </StatusContext.Provider>
       </div>
@@ -40,17 +40,17 @@ function App() {
   } else if (status === Status.USER_HOME) {
     return (
       <div>
+        <p>Welcome, {user}!</p>
         <UserContext.Provider value={user}>
-          <p>Welcome, {user}!</p>
           <CreatePost />
-          <button
-            type="button"
-            onClick={logout}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Log Out
-          </button>
         </UserContext.Provider>
+        <button
+          type="button"
+          onClick={logout}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Log Out
+        </button>
       </div>
     );
   }
