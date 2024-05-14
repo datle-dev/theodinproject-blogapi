@@ -30,9 +30,15 @@ export default function UserPosts () {
   } else {
     return (
       <>
-        <h1>Mapped Posts</h1>
+        <h1 className="text-3xl font-bold">Mapped Posts</h1>
         {posts.posts.map((post) => {
-          return <Markdown>{post.text}</Markdown>;
+          return (
+            <article>
+              <h2 className="text-xl font-bold">{post.title}</h2>
+              <h3 className="text-l font-bold">{post.username}</h3>
+              <Markdown>{post.text}</Markdown>
+            </article>
+          );
         })}
         <h2>JSON Response</h2>
         {JSON.stringify(posts)}
