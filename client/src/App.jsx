@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 import './styles/App.css';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import SecureRoute from './SecureRoute';
+export const UserContext = createContext(null);
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -21,7 +22,7 @@ function App() {
   return (
     <>
       {user !== null ? (
-        <div>
+        <UserContext.Provider value={user}>
           <p>Welcome, {user}!</p>
           <SecureRoute />
           <button
@@ -31,7 +32,7 @@ function App() {
           >
             Log Out
           </button>
-        </div>
+        </UserContext.Provider>
       ) : (
         <div>
           <p>You&apos;re not logged in</p>
