@@ -10,9 +10,33 @@ exports.postGet = asyncHandler(async (req, res, next) => {
   res.json({ message: 'Post GET', postId: `${req.params.postId}` });
 });
 
-exports.postPost = asyncHandler(async (req, res, next) => {
-  res.json({ message: 'Post POST' });
-});
+exports.postPost = [
+  body('title')
+    .trim()
+    .isLength({ min: 3 })
+    .escape()
+    .withMessage('Title is required'),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const post = new Post({
+      username: req.body.username,
+      title: req.body.title,
+      text: req.body.text,
+      comments: req.body.comments,
+      date: req.body.date,
+      draft: req.body.draft,
+    });
+
+    if (!errors.isEmpty()) {
+      res.json({ message: 'Post POST Error' });
+      return;
+    } else {
+      await post.save();
+      res.json({ message: 'Post POST Success'} );
+    }
+  }),
+]
 
 exports.postAllCommentsGet = asyncHandler(async (req, res, next) => {
   res.json({ message: 'Post All Comment GET', postId: `${req.params.postId}` });
