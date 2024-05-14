@@ -3,6 +3,8 @@ import './styles/App.css';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import SecureRoute from './SecureRoute';
+import CreatePost from './CreatePost';
+
 export const UserContext = createContext(null);
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
         <UserContext.Provider value={user}>
           <p>Welcome, {user}!</p>
           <SecureRoute />
+          <CreatePost />
           <button
             type="button"
             onClick={logout}
