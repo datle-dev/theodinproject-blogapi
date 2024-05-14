@@ -52,7 +52,10 @@ export default function CreatePost() {
           {...register('title')}
           className="border"
         />
+        <label htmlFor="text">Content</label>
         <textarea
+          name="text"
+          id="text"
           placeholder='Write your blog post here...'
           {...register('text')}
           className="border"
