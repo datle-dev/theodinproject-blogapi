@@ -29,7 +29,7 @@ export default function CreatePost() {
       .catch((err) => console.error(err));
     console.log({
       username: user,
-      title: 'title',
+      title: data.title,
       text: data.text,
       comments: [],
       date: new Date(),
@@ -43,6 +43,15 @@ export default function CreatePost() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-4 rounded"
       >
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Blog post title"
+          {...register('title')}
+          className="border"
+        />
         <textarea
           placeholder='Write your blog post here...'
           {...register('text')}
