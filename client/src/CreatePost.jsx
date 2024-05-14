@@ -3,7 +3,11 @@ import { useForm } from 'react-hook-form';
 import { UserContext } from './App';
 
 export default function CreatePost() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: 'onBlur' });
   const user = useContext(UserContext);
 
   const onSubmit = async (data) => {
@@ -49,7 +53,13 @@ export default function CreatePost() {
           name="title"
           id="title"
           placeholder="Blog post title"
-          {...register('title')}
+          {...register('title', {
+            required: 'Title is required',
+            minLength: {
+              value: 3,
+              message: 'Title must be at least 3 characters',
+            },
+          })}
           className="border"
         />
         <label htmlFor="text">Content</label>
@@ -57,7 +67,9 @@ export default function CreatePost() {
           name="text"
           id="text"
           placeholder='Write your blog post here...'
-          {...register('text')}
+          {...register('text', {
+            required: 'Content is required',
+          })}
           className="border"
         ></textarea>
         <label htmlFor="draft">Mark as Draft</label>
@@ -67,6 +79,8 @@ export default function CreatePost() {
           id="draft"
           {...register('isDraft')}
         />
+        <span> {errors.title && errors.title.message}</span>
+        <span> {errors.text && errors.text.message}</span>
         <input
           type="submit"
           value="Submit Post"
