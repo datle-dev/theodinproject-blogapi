@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { DateTime } = require('luxon');
 
 const PostSchema = new mongoose.Schema({
   username: { type: String, required: true },
@@ -8,5 +9,9 @@ const PostSchema = new mongoose.Schema({
   date: { type: Date, required: true },
   draft: { type: Boolean, required: true },
 });
+
+PostSchema.virtual('date_formatted').get(function () {
+  return DateTime.fromJSDate(this.date).toLocaleString(DateTime.DATE_MED);
+})
 
 module.exports = mongoose.model('Post', PostSchema);
