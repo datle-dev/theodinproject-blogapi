@@ -30,18 +30,20 @@ export default function UserPosts () {
   } else {
     return (
       <>
-        <h1 className="text-3xl font-bold">Mapped Posts</h1>
-        {posts.posts.map((post) => {
-          return (
-            <article>
-              <h2 className="text-xl font-bold">{post.title}</h2>
-              <h3 className="text-l font-bold">{post.username}</h3>
-              <Markdown>{post.text}</Markdown>
-            </article>
-          );
-        })}
-        <h2>JSON Response</h2>
-        {JSON.stringify(posts)}
+        <div className="flex flex-col gap-2 m-2">
+          <h1 className="text-3xl font-bold">Mapped Posts</h1>
+          {posts.posts.map((post) => {
+            return (
+              <article className="border rounded p-2">
+                <h2 className="text-xl font-bold">{post.title}</h2>
+                <h3 className="text-l font-bold">{post.username}</h3>
+                <Markdown>{post.text}</Markdown>
+              </article>
+            );
+          })}
+          <h2>JSON Response</h2>
+          {JSON.stringify(posts)}
+        </div>
       </>
     );
   }
