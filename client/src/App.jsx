@@ -30,6 +30,11 @@ function App() {
     setStatus(Status.USER_HOME);
   };
 
+  const onClickViewPost = (e) => {
+    e.preventDefault();
+    console.log(e.target.href);
+  };
+
   const logout = () => {
     localStorage.removeItem('jwtblog');
     setUser(null);
@@ -51,7 +56,7 @@ function App() {
       <div>
         <p>Welcome, {user}!</p>
         <StatusContext.Provider value={{ status, setStatus }}>
-          <UserPosts />
+          <UserPosts handlePostClick={onClickViewPost}/>
         </StatusContext.Provider>
         <button
           type="button"
