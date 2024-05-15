@@ -3,6 +3,7 @@ import './styles/App.css';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import UserPosts from './UserPosts';
+import SinglePost from './SinglePost';
 import CreatePost from './CreatePost';
 
 import { Status } from './constants/status';
@@ -12,26 +13,32 @@ export const StatusContext = createContext(null);
 
 function App() {
   const [status, setStatus] = useState(Status.VISITOR);
+  const [currentPost, setCurrentPost] = useState('');
   const [user, setUser] = useState(() => {
     if (localStorage.getItem('jwtblog') !== null) {
       setStatus(Status.USER_HOME);
       return JSON.parse(localStorage.getItem('jwtblog')).username;
     } else {
       setStatus(Status.VISITOR);
+      setCurrentPost('');
       return null;
     }
   });
 
   const onClickCreatePost = () => {
     setStatus(Status.USER_WRITING);
+    setCurrentPost('');
   };
 
   const onClickHome = () => {
     setStatus(Status.USER_HOME);
+    setCurrentPost('');
   };
 
   const onClickViewPost = (e) => {
     e.preventDefault();
+    setStatus(Status.USER_VIEWING_POST);
+    setCurrentPost(e.target.href);
   };
 
   const logout = () => {
@@ -71,6 +78,12 @@ function App() {
         >
           Log Out
         </button>
+      </div>
+    );
+  } else if (status === Status.USER_VIEWING_POST) {
+    return (
+      <div>
+        <SinglePost postHref={currentPost} />
       </div>
     );
   } else if (status === Status.USER_WRITING) {
