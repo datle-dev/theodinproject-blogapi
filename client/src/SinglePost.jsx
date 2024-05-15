@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Markdown from 'react-markdown';
 
 export default function SinglePost({ postHref }) {
   const [isPostLoading, setIsPostLoading] = useState(true);
@@ -27,11 +28,14 @@ export default function SinglePost({ postHref }) {
   } else {
     return (
       <>
-        <div>
-          <p>{post.post.title}</p>
-          <p>{post.post.date}</p>
-          <p>{post.post.text}</p>
-        </div>
+        <div className="prose m-4">
+          <h1 className="text-6xl">{post.title}</h1>
+          <h2>{post.date_formatted}</h2>
+          <h2>{post.username}</h2>
+          <Markdown>
+            {post.text}
+          </Markdown>
+          </div>
       </>
     );
   }
