@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { UserContext } from './App';
 import Markdown from 'react-markdown';
 
-export default function UserPosts () {
+export default function UserPosts ({ handlePostClick }) {
   const [isPostsLoading, setIsPostsLoading] = useState(true);
   const user = useContext(UserContext);
   const secret_token = JSON.parse(localStorage.getItem('jwtblog')).token;
@@ -24,7 +24,6 @@ export default function UserPosts () {
       .catch((err) => console.error(err));
   });
 
-  
   if (isPostsLoading) {
     return <p>Loading...</p>;
   } else {
@@ -34,8 +33,10 @@ export default function UserPosts () {
           <h1 className="text-3xl font-bold">Mapped Posts</h1>
           {posts.posts.map((post) => {
             return (
-              <article className="border rounded p-2">
-                <h2 className="text-xl font-bold">{post.title}</h2>
+              <article className="border rounded p-2" key={post._id}>
+                <h2 className="text-xl font-bold">
+                  <a href={post._id} onClick={handlePostClick}>{post.title}</a>
+                </h2>
                 <h3 className="text-l font-bold">{post.username}</h3>
                 <Markdown>{post.text}</Markdown>
               </article>
