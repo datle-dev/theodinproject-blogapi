@@ -32,7 +32,6 @@ function App() {
 
   const onClickViewPost = (e) => {
     e.preventDefault();
-    console.log(e.target.href);
   };
 
   const logout = () => {

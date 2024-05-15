@@ -16,7 +16,6 @@ export default function UserPosts ({ handlePostClick }) {
     })
       .then((res) => res.json())
       .then((resData) => {
-        console.log(resData);
         setIsPostsLoading(false);
         setPosts(resData);
         return;
