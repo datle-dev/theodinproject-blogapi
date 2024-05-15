@@ -8,7 +8,8 @@ exports.allPostsGet = asyncHandler(async (req, res, next) => {
 });
 
 exports.postGet = asyncHandler(async (req, res, next) => {
-  res.json({ message: 'Post GET', postId: `${req.params.postId}` });
+  const post = await Post.findById(req.params.postId).exec();
+  res.json({ message: 'Post GET', postId: `${req.params.postId}`, post: post });
 });
 
 exports.postPost = [
