@@ -31,7 +31,6 @@ export default function SinglePost({ postHref }) {
           <p>{post.post.title}</p>
           <p>{post.post.date}</p>
           <p>{post.post.text}</p>
-          <p>{JSON.stringify(post)}</p>
         </div>
       </>
     );
