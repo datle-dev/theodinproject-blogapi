@@ -34,7 +34,7 @@ export default function UserPosts ({ handlePostClick }) {
             return (
               <article className="border rounded p-2" key={post._id}>
                 <h2 className="text-xl font-bold">
-                  <a href={post._id} onClick={handlePostClick}>{post.title}</a>
+                  <a href={'http://localhost:3000/posts/' + post._id} onClick={handlePostClick}>{post.title}</a>
                 </h2>
                 <h3 className="text-l font-bold">{post.username}</h3>
                 <Markdown>{post.text}</Markdown>
