@@ -65,6 +65,7 @@ function App() {
       <div>
         <Navigation
           onClickHome={onClickHome}
+          onClickCreatePost={onClickCreatePost}
           onClickLogOut={logout}
         />
         <StatusContext.Provider value={{ status, setStatus }}>
