@@ -63,7 +63,10 @@ function App() {
   } else if (status === Status.USER_HOME) {
     return (
       <div>
-        <Navigation />
+        <Navigation
+          onClickHome={onClickHome}
+          onClickLogOut={logout}
+        />
         <StatusContext.Provider value={{ status, setStatus }}>
           <Feed handlePostClick={onClickViewPost}/>
         </StatusContext.Provider>
