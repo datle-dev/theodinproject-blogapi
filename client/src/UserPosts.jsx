@@ -28,7 +28,6 @@ export default function UserPosts ({ handlePostClick }) {
     return (
       <>
         <div>
-          <h1>Mapped Posts</h1>
           {posts.posts.map((post) => {
             return (
               <article>

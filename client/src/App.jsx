@@ -53,7 +53,6 @@ function App() {
   if (status === Status.VISITOR) {
     return (
       <div>
-        <p>You&apos;re not logged in</p>
         <SignupForm />
         <StatusContext.Provider value={{ status, setStatus }}>
           <LoginForm toggleUser={setUser} />
@@ -63,7 +62,6 @@ function App() {
   } else if (status === Status.USER_HOME) {
     return (
       <div>
-        <p>Welcome, {user}!</p>
         <StatusContext.Provider value={{ status, setStatus }}>
           <UserPosts handlePostClick={onClickViewPost}/>
         </StatusContext.Provider>
