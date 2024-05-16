@@ -2,7 +2,7 @@ import { useState, createContext } from 'react';
 import './styles/App.css';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
-import UserPosts from './UserPosts';
+import Feed from './Feed';
 import SinglePost from './SinglePost';
 import CreatePost from './CreatePost';
 import CommentForm from './CommentForm';
@@ -66,7 +66,7 @@ function App() {
       <div>
         <Navigation />
         <StatusContext.Provider value={{ status, setStatus }}>
-          <UserPosts handlePostClick={onClickViewPost}/>
+          <Feed handlePostClick={onClickViewPost}/>
         </StatusContext.Provider>
       </div>
     );
