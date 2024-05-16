@@ -49,7 +49,12 @@ exports.postPost = [
 ]
 
 exports.postAllCommentsGet = asyncHandler(async (req, res, next) => {
-  res.json({ message: 'Post All Comment GET', postId: `${req.params.postId}` });
+  const allComments = await Comment.find({ postId: req.params.postId });
+  res.json({
+    message: 'Post All Comment GET',
+    postId: `${req.params.postId}`,
+    comments: allComments,
+  });
 });
 
 exports.postCommentGet = asyncHandler(async (req, res, next) => {
