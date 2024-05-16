@@ -7,6 +7,7 @@ import SinglePost from './SinglePost';
 import CreatePost from './CreatePost';
 import CommentForm from './CommentForm';
 import PostComments from './PostComments';
+import Navigation from './Navigation';
 
 import { Status } from './constants/status';
 
@@ -53,6 +54,7 @@ function App() {
   if (status === Status.VISITOR) {
     return (
       <div>
+        <Navigation />
         <SignupForm />
         <StatusContext.Provider value={{ status, setStatus }}>
           <LoginForm toggleUser={setUser} />
@@ -62,26 +64,16 @@ function App() {
   } else if (status === Status.USER_HOME) {
     return (
       <div>
+        <Navigation />
         <StatusContext.Provider value={{ status, setStatus }}>
           <UserPosts handlePostClick={onClickViewPost}/>
         </StatusContext.Provider>
-        <button
-          type="button"
-          onClick={onClickCreatePost}
-        >
-          Create Post
-        </button>
-        <button
-          type="button"
-          onClick={logout}
-        >
-          Log Out
-        </button>
       </div>
     );
   } else if (status === Status.USER_VIEWING_POST) {
     return (
       <div>
+        <Navigation />
         <SinglePost postHref={currentPost} />
         <PostContext.Provider value={{user:user, post: currentPost}}>
           <CommentForm />
@@ -89,26 +81,15 @@ function App() {
         <PostContext.Provider value={currentPost}>
           <PostComments />
         </PostContext.Provider>
-        <button
-          type="button"
-          onClick={onClickHome}
-        >
-          Back to Home
-        </button>
       </div>
     );
   } else if (status === Status.USER_WRITING) {
     return (
       <div>
+        <Navigation />
         <UserContext.Provider value={user}>
           <CreatePost />
         </UserContext.Provider>
-        <button
-          type="button"
-          onClick={onClickHome}
-        >
-          Back to Home
-        </button>
       </div>
     );
   }
