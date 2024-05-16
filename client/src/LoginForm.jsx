@@ -35,7 +35,6 @@ export default function LoginForm({ toggleUser }) {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold">Login</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
         >
