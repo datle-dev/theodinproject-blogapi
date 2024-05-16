@@ -10,6 +10,7 @@ import { Status } from './constants/status';
 
 export const UserContext = createContext(null);
 export const StatusContext = createContext(null);
+export const PostContext = createContext(null);
 
 function App() {
   const [status, setStatus] = useState(Status.VISITOR);
@@ -84,6 +85,8 @@ function App() {
     return (
       <div>
         <SinglePost postHref={currentPost} />
+        <PostContext.Provider value={{user:user, post: currentPost}}>
+        </PostContext.Provider>
         <button
           type="button"
           onClick={onClickHome}
