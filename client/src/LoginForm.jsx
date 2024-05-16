@@ -34,13 +34,12 @@ export default function LoginForm({ toggleUser }) {
 
   return (
     <>
-      <div className="m-4 p-4">
+      <div>
         <h1 className="text-3xl font-bold">Login</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 rounded"
         >
-          <label htmlFor="usernamelogin" className="font-bold">
+          <label htmlFor="usernamelogin">
             Username
           </label>
           <input
@@ -50,9 +49,8 @@ export default function LoginForm({ toggleUser }) {
             placeholder="Username"
             maxLength="20"
             {...register('username')}
-            className="border border-solid border-gray-300 rounded"
           />
-          <label htmlFor="passwordlogin" className="font-bold">
+          <label htmlFor="passwordlogin">
             Password
           </label>
           <input
@@ -62,15 +60,13 @@ export default function LoginForm({ toggleUser }) {
             placeholder="Password"
             maxLength="20"
             {...register('password')}
-            className="border border-solid border-gray-300 rounded"
           />
           <input
             type="submit"
             value="Login"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           />
         </form>
-        <h1 className="text-xl font-bold">Login Response JSON</h1>
+        <h1>Login Response JSON</h1>
         <p>{JSON.stringify(apiResponse)}</p>
       </div>
     </>

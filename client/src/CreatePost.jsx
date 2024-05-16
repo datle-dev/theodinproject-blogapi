@@ -49,7 +49,6 @@ export default function CreatePost() {
   const submissionForm = (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 rounded"
     >
       <label htmlFor="title">Title</label>
       <input
@@ -64,7 +63,6 @@ export default function CreatePost() {
             message: 'Title must be at least 3 characters',
           },
         })}
-        className="border"
       />
       <label htmlFor="text">Content</label>
       <textarea
@@ -74,7 +72,6 @@ export default function CreatePost() {
         {...register('text', {
           required: 'Content is required',
         })}
-        className="border"
       ></textarea>
       <label htmlFor="draft">Mark as Draft</label>
       <input
@@ -88,7 +85,6 @@ export default function CreatePost() {
       <input
         type="submit"
         value="Submit Post"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       />
     </form>
   )

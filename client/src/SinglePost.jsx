@@ -28,8 +28,8 @@ export default function SinglePost({ postHref }) {
   } else {
     return (
       <>
-        <div className="prose m-4">
-          <h1 className="text-6xl">{post.title}</h1>
+        <div>
+          <h1>{post.title}</h1>
           <h2>{post.date_formatted}</h2>
           <h2>{post.username}</h2>
           <Markdown>

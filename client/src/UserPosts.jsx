@@ -27,15 +27,15 @@ export default function UserPosts ({ handlePostClick }) {
   } else {
     return (
       <>
-        <div className="flex flex-col gap-2 m-2">
-          <h1 className="text-3xl font-bold">Mapped Posts</h1>
+        <div>
+          <h1>Mapped Posts</h1>
           {posts.posts.map((post) => {
             return (
-              <article className="border rounded max-h-48 truncate p-2" key={post._id}>
-                <h2 className="text-xl font-bold">
+              <article>
+                <h2>
                   <a href={'http://localhost:3000/posts/' + post._id} onClick={handlePostClick}>{post.title}</a>
                 </h2>
-                <h3 className="text-l font-bold">{post.username}</h3>
+                <h3>{post.username}</h3>
               </article>
             );
           })}

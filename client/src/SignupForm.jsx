@@ -31,13 +31,12 @@ export default function SignupForm() {
 
   return (
     <>
-      <div className="m-4 p-4">
-        <h1 className="text-3xl font-bold">Sign Up</h1>
+      <div>
+        <h1>Sign Up</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 rounded"
         >
-          <label htmlFor="usernamesignup" className="font-bold">
+          <label htmlFor="usernamesignup">
             Username
           </label>
           <input
@@ -62,10 +61,9 @@ export default function SignupForm() {
                   'Username must start with a letter and contain only letters, numbers, and underscores',
               },
             })}
-            className="border border-solid border-gray-300 rounded"
           />
           <span>{errors.username && errors.username.message}</span>
-          <label htmlFor="passwordsignup" className="font-bold">
+          <label htmlFor="passwordsignup">
             Password
           </label>
           <input
@@ -85,16 +83,14 @@ export default function SignupForm() {
                 message: 'Password must be no more than 20 characters',
               },
             })}
-            className="border border-solid border-gray-300 rounded"
           />
           <span> {errors.password && errors.password.message}</span>
           <input
             type="submit"
             value="Sign Up"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           />
         </form>
-        <h1 className="text-xl font-bold">Register Response JSON</h1>
+        <h1>Register Response JSON</h1>
         <p>{JSON.stringify(apiResponse)}</p>
       </div>
     </>

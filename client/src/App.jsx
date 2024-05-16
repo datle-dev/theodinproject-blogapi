@@ -52,7 +52,7 @@ function App() {
 
   if (status === Status.VISITOR) {
     return (
-      <div className="container mx-auto max-w-screen-md">
+      <div>
         <p>You&apos;re not logged in</p>
         <SignupForm />
         <StatusContext.Provider value={{ status, setStatus }}>
@@ -62,7 +62,7 @@ function App() {
     );
   } else if (status === Status.USER_HOME) {
     return (
-      <div className="container mx-auto max-w-screen-md">
+      <div>
         <p>Welcome, {user}!</p>
         <StatusContext.Provider value={{ status, setStatus }}>
           <UserPosts handlePostClick={onClickViewPost}/>
@@ -70,14 +70,12 @@ function App() {
         <button
           type="button"
           onClick={onClickCreatePost}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           Create Post
         </button>
         <button
           type="button"
           onClick={logout}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           Log Out
         </button>
@@ -85,7 +83,7 @@ function App() {
     );
   } else if (status === Status.USER_VIEWING_POST) {
     return (
-      <div className="container mx-auto max-w-screen-md">
+      <div>
         <SinglePost postHref={currentPost} />
         <PostContext.Provider value={{user:user, post: currentPost}}>
           <CommentForm />
@@ -96,7 +94,6 @@ function App() {
         <button
           type="button"
           onClick={onClickHome}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           Back to Home
         </button>
@@ -104,14 +101,13 @@ function App() {
     );
   } else if (status === Status.USER_WRITING) {
     return (
-      <div className="container mx-auto max-w-screen-md">
+      <div>
         <UserContext.Provider value={user}>
           <CreatePost />
         </UserContext.Provider>
         <button
           type="button"
           onClick={onClickHome}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           Back to Home
         </button>

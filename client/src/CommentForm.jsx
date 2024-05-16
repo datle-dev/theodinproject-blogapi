@@ -44,7 +44,6 @@ export default function CommentForm() {
   const submissionForm = (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 rounded"
     >
       <label htmlFor="text">Comment</label>
       <textarea
@@ -54,13 +53,11 @@ export default function CommentForm() {
         {...register('text', {
           required: 'Comment is required',
         })}
-        className="border"
       ></textarea>
       <span> {errors.text && errors.text.message}</span>
       <input
         type="submit"
         value="Submit Comment"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       />
     </form>
   )
