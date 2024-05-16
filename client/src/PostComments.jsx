@@ -31,11 +31,11 @@ export default function PostComments () {
         <div>
           {comments.comments.map((comment) => {
             return (
-              <div key={comment._id}>
+              <article key={comment._id} className="flex flex-col border rounded p-2 m-2">
                 <p>{comment.username}</p>
                 <p>{comment.date_formatted}</p>
                 <p>{comment.text}</p>
-              </div>
+              </article>
             );
           })}
         </div>
