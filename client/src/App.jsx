@@ -97,7 +97,12 @@ function App() {
   } else if (status === Status.USER_VIEWING_POST) {
     return (
       <div>
-        <Navigation />
+        <Navigation
+          onClickHome={onClickHome}
+          onClickDashboard={onClickDashboard}
+          onClickCreatePost={onClickCreatePost}
+          onClickLogOut={logout}
+        />
         <SinglePost postHref={currentPost} />
         <PostContext.Provider value={{user:user, post: currentPost}}>
           <CommentForm />
@@ -110,7 +115,12 @@ function App() {
   } else if (status === Status.USER_WRITING) {
     return (
       <div>
-        <Navigation />
+        <Navigation
+          onClickHome={onClickHome}
+          onClickDashboard={onClickDashboard}
+          onClickCreatePost={onClickCreatePost}
+          onClickLogOut={logout}
+        />
         <UserContext.Provider value={user}>
           <CreatePost />
         </UserContext.Provider>
