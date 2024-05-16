@@ -1,4 +1,4 @@
-mport { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { UserContext } from './App';
 
 export default function UserPosts ({ handlePostClick }) {
