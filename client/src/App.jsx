@@ -5,6 +5,7 @@ import LoginForm from './LoginForm';
 import UserPosts from './UserPosts';
 import SinglePost from './SinglePost';
 import CreatePost from './CreatePost';
+import CommentForm from './CommentForm';
 
 import { Status } from './constants/status';
 
@@ -86,6 +87,7 @@ function App() {
       <div>
         <SinglePost postHref={currentPost} />
         <PostContext.Provider value={{user:user, post: currentPost}}>
+          <CommentForm />
         </PostContext.Provider>
         <button
           type="button"
