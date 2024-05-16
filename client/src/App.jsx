@@ -54,7 +54,6 @@ function App() {
   if (status === Status.VISITOR) {
     return (
       <div>
-        <Navigation />
         <SignupForm />
         <StatusContext.Provider value={{ status, setStatus }}>
           <LoginForm toggleUser={setUser} />
