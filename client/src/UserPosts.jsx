@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import { UserContext } from './App';
-import Markdown from 'react-markdown';
 
 export default function UserPosts ({ handlePostClick }) {
   const [isPostsLoading, setIsPostsLoading] = useState(true);
@@ -37,7 +36,6 @@ export default function UserPosts ({ handlePostClick }) {
                   <a href={'http://localhost:3000/posts/' + post._id} onClick={handlePostClick}>{post.title}</a>
                 </h2>
                 <h3 className="text-l font-bold">{post.username}</h3>
-                <Markdown>{post.text}</Markdown>
               </article>
             );
           })}
