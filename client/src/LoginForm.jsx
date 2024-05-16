@@ -66,8 +66,6 @@ export default function LoginForm({ toggleUser }) {
             value="Login"
           />
         </form>
-        <h1>Login Response JSON</h1>
-        <p>{JSON.stringify(apiResponse)}</p>
       </div>
     </>
   );

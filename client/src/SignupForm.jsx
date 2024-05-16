@@ -90,8 +90,6 @@ export default function SignupForm() {
             value="Sign Up"
           />
         </form>
-        <h1>Register Response JSON</h1>
-        <p>{JSON.stringify(apiResponse)}</p>
       </div>
     </>
   );
