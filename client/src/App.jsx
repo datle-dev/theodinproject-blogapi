@@ -8,6 +8,7 @@ import CreatePost from './CreatePost';
 import CommentForm from './CommentForm';
 import PostComments from './PostComments';
 import Navigation from './Navigation';
+import Dashboard from './Dashboard';
 
 import { Status } from './constants/status';
 
@@ -39,6 +40,11 @@ function App() {
     setCurrentPost('');
   };
 
+  const onClickDashboard = () => {
+    setStatus(Status.USER_DASHBOARD);
+    setCurrentPost('');
+  };
+  
   const onClickViewPost = (e) => {
     e.preventDefault();
     setStatus(Status.USER_VIEWING_POST);
@@ -65,6 +71,7 @@ function App() {
       <div>
         <Navigation
           onClickHome={onClickHome}
+          onClickDashboard={onClickDashboard}
           onClickCreatePost={onClickCreatePost}
           onClickLogOut={logout}
         />
@@ -72,6 +79,20 @@ function App() {
           <Feed handlePostClick={onClickViewPost}/>
         </StatusContext.Provider>
       </div>
+    );
+  } else if (status === Status.USER_DASHBOARD) {
+    return (
+      <>
+        <div>
+          <Navigation
+            onClickHome={onClickHome}
+            onClickDashboard={onClickDashboard}
+            onClickCreatePost={onClickCreatePost}
+            onClickLogOut={logout}
+          />
+          <Dashboard />
+        </div>
+      </>
     );
   } else if (status === Status.USER_VIEWING_POST) {
     return (

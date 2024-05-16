@@ -3,4 +3,5 @@ export const Status = Object.freeze({
   USER_HOME: 'userHome',
   USER_WRITING: 'userWriting',
   USER_VIEWING_POST:'userViewingPost',
+  USER_DASHBOARD: 'userDashboard',
 });

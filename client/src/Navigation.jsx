@@ -1,4 +1,4 @@
-export default function Navigation ({ onClickHome, onClickYourPosts, onClickCreatePost, onClickLogOut }) {
+export default function Navigation ({ onClickHome, onClickDashboard, onClickCreatePost, onClickLogOut }) {
   return (
     <>
       <nav>
@@ -10,9 +10,9 @@ export default function Navigation ({ onClickHome, onClickYourPosts, onClickCrea
         </button>
         <button
           type="button"
-          onClick={onClickYourPosts}
+          onClick={onClickDashboard}
         >
-          Your Posts
+          Dashboard
         </button>
         <button
           type="button"
