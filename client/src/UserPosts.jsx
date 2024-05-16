@@ -31,7 +31,7 @@ export default function UserPosts ({ handlePostClick }) {
           <h1 className="text-3xl font-bold">Mapped Posts</h1>
           {posts.posts.map((post) => {
             return (
-              <article className="border rounded p-2" key={post._id}>
+              <article className="border rounded max-h-48 truncate p-2" key={post._id}>
                 <h2 className="text-xl font-bold">
                   <a href={'http://localhost:3000/posts/' + post._id} onClick={handlePostClick}>{post.title}</a>
                 </h2>
