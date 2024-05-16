@@ -94,6 +94,6 @@ export default function CreatePost() {
   } else if (isSubmitted) {
     return <p>Post submitted!</p>;
   } else {
-    return submissionForm;
+    return <div>{submissionForm}</div>;
   }
 }
