@@ -29,6 +29,15 @@ export default function PostComments () {
     return (
       <>
         <div>
+          {comments.comments.map((comment) => {
+            return (
+              <div key={comment._id}>
+                <p>{comment.username}</p>
+                <p>{comment.date_formatted}</p>
+                <p>{comment.text}</p>
+              </div>
+            );
+          })}
           <p>{JSON.stringify(comments)}</p>
         </div>
       </>
