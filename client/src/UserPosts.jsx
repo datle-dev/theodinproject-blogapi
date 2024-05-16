@@ -41,8 +41,6 @@ export default function UserPosts ({ handlePostClick }) {
               </article>
             );
           })}
-          <h2>JSON Response</h2>
-          {JSON.stringify(posts)}
         </div>
       </>
     );

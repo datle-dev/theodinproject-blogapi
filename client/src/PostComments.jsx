@@ -38,7 +38,6 @@ export default function PostComments () {
               </div>
             );
           })}
-          <p>{JSON.stringify(comments)}</p>
         </div>
       </>
     );
