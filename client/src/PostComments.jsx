@@ -24,7 +24,7 @@ export default function PostComments () {
   });
 
   if (isCommentsLoading) {
-    return <p>Loading comments</p>;
+    return <p>Loading comments...</p>;
   } else {
     return (
       <>
