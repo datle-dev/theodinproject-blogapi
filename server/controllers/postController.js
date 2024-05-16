@@ -1,3 +1,4 @@
+const Comment = require('../models/comment');
 const Post = require('../models/post');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
@@ -59,12 +60,33 @@ exports.postCommentGet = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.postCommentPost = asyncHandler(async (req, res, next) => {
-  res.json({
-    message: 'Post Comment POST',
-    postId: `${req.params.postId}`,
-  });
-});
+exports.postCommentPost = [
+  body('text')
+    .isLength({ min: 5 })
+    .escape()
+    .withMessage('Comment must be at least 5 characters'),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const comment = new Comment({
+      username: req.body.username,
+      text: req.body.text,
+      date: req.body.date,
+      postId: req.params.postId,
+    });
+
+    if (!errors.isEmpty()) {
+      res.json({ message: 'Post POST Error' });
+      return;
+    } else {
+      await comment.save();
+      res.json({
+        message: 'Post Comment POST',
+        postId: `${req.params.postId}`,
+      });
+    }
+  }),
+];
 
 exports.postPut = asyncHandler(async (req, res, next) => {
   res.json({
