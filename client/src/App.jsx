@@ -52,7 +52,7 @@ function App() {
 
   if (status === Status.VISITOR) {
     return (
-      <div>
+      <div className="container mx-auto max-w-screen-md">
         <p>You&apos;re not logged in</p>
         <SignupForm />
         <StatusContext.Provider value={{ status, setStatus }}>
@@ -62,7 +62,7 @@ function App() {
     );
   } else if (status === Status.USER_HOME) {
     return (
-      <div>
+      <div className="container mx-auto max-w-screen-md">
         <p>Welcome, {user}!</p>
         <StatusContext.Provider value={{ status, setStatus }}>
           <UserPosts handlePostClick={onClickViewPost}/>
@@ -85,7 +85,7 @@ function App() {
     );
   } else if (status === Status.USER_VIEWING_POST) {
     return (
-      <div>
+      <div className="container mx-auto max-w-screen-md">
         <SinglePost postHref={currentPost} />
         <PostContext.Provider value={{user:user, post: currentPost}}>
           <CommentForm />
@@ -104,7 +104,7 @@ function App() {
     );
   } else if (status === Status.USER_WRITING) {
     return (
-      <div>
+      <div className="container mx-auto max-w-screen-md">
         <UserContext.Provider value={user}>
           <CreatePost />
         </UserContext.Provider>
