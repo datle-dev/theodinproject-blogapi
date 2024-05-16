@@ -49,7 +49,8 @@ exports.postPost = [
 ]
 
 exports.postAllCommentsGet = asyncHandler(async (req, res, next) => {
-  const allComments = await Comment.find({ postId: req.params.postId });
+  const allComments = await Comment.find({ postId: req.params.postId }).exec();
+
   res.json({
     message: 'Post All Comment GET',
     postId: `${req.params.postId}`,
