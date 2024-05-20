@@ -5,7 +5,8 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
   const [isDashboardLoading, setIsDashboardLoading] = useState(true);
   const user = useContext(UserContext);
   const secret_token = JSON.parse(localStorage.getItem('jwtblog')).token;
-  const [userPosts, setUserPosts] = useState(async () => {
+  
+  const fetchPosts = async () => {
     await fetch('http://localhost:3000/posts?username=' + user, {
       method: 'GET',
       mode: 'cors',
@@ -21,7 +22,9 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
         return;
       })
       .catch((err) => console.error(err));
-  });
+  };
+
+  const [userPosts, setUserPosts] = useState(fetchPosts);
 
   const handlePostToggleDraft = async (e) => {
     let userPostsUpdated = [...userPosts];
@@ -72,21 +75,7 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
         })
         .catch((err) => console.error(err));
 
-      await fetch('http://localhost:3000/posts?username=' + user, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-          Authorization: 'Bearer ' + secret_token,
-        },
-      })
-        .then((res) => res.json())
-        .then((resData) => {
-          console.log(resData);
-          setIsDashboardLoading(false);
-          setUserPosts(resData);
-          return;
-        })
-        .catch((err) => console.error(err));
+      fetchPosts();
     }
   };
 
