@@ -4,7 +4,14 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 
 exports.allPostsGet = asyncHandler(async (req, res, next) => {
-  const allPosts = await Post.find().sort({date: -1}).exec();
+  let allPosts;
+
+  if (Object.hasOwn(req.query, 'username')) {
+    allPosts = await Post.find({ username: req.query.username }).sort({date: -1}).exec()
+  } else {
+    allPosts = await Post.find().sort({date: -1}).exec();
+  }
+
   res.json({ message: 'Post All GET', posts: allPosts });
 });
 
