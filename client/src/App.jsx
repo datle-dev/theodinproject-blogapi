@@ -9,6 +9,7 @@ import CommentForm from './CommentForm';
 import PostComments from './PostComments';
 import Navigation from './Navigation';
 import Dashboard from './Dashboard';
+import EditPost from './EditPost';
 
 import { Status } from './constants/status';
 
@@ -51,6 +52,12 @@ function App() {
     setCurrentPost(e.target.href);
   };
 
+  const onClickEditPost = (e) => {
+    e.preventDefault();
+    setStatus(Status.USER_EDITING_POST);
+    setCurrentPost('http://localhost:3000/posts/' + e.target.getAttribute('postId'));
+  };
+
   const logout = () => {
     localStorage.removeItem('jwtblog');
     setUser(null);
@@ -91,7 +98,7 @@ function App() {
             onClickLogOut={logout}
           />
           <UserContext.Provider value={user}>
-            <Dashboard handlePostClick={onClickViewPost}/>
+            <Dashboard handlePostClick={onClickViewPost} handlePostEdit={onClickEditPost}/>
           </UserContext.Provider>
         </div>
       </>
@@ -126,6 +133,18 @@ function App() {
         <UserContext.Provider value={user}>
           <CreatePost />
         </UserContext.Provider>
+      </div>
+    );
+  } else if (status === Status.USER_EDITING_POST) {
+    return (
+      <div>
+        <Navigation
+          onClickHome={onClickHome}
+          onClickDashboard={onClickDashboard}
+          onClickCreatePost={onClickCreatePost}
+          onClickLogOut={logout}
+        />
+        <EditPost postHref={currentPost} />
       </div>
     );
   }
