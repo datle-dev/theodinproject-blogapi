@@ -33,7 +33,6 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
     console.log(userPostsUpdated[postIndex].draft);
     setUserPosts(userPostsUpdated);
 
-
     await fetch('http://localhost:3000/posts/' + postId, {
       method: 'PUT',
       mode: 'cors',
