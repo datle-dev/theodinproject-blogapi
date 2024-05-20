@@ -39,8 +39,11 @@ export default function Dashboard () {
     const postId = e.target.getAttribute('postid');
     const postIndex = userPosts.findIndex((post) => post._id === postId);
     userPostsUpdated[postIndex].draft = !userPostsUpdated[postIndex].draft;
+    const draftStatus = userPostsUpdated[postIndex].draft;
     console.log(userPostsUpdated);
+    console.log(userPostsUpdated[postIndex].draft);
     setUserPosts(userPostsUpdated);
+
 
     await fetch('http://localhost:3000/posts/' + postId, {
       method: 'PUT',
