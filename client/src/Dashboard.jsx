@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { UserContext } from './App';
 
-export default function Dashboard () {
+export default function Dashboard ({ handlePostClick, handlePostEdit }) {
   const [isDashboardLoading, setIsDashboardLoading] = useState(true);
   const user = useContext(UserContext);
   const secret_token = JSON.parse(localStorage.getItem('jwtblog')).token;
@@ -22,17 +22,6 @@ export default function Dashboard () {
       })
       .catch((err) => console.error(err));
   });
-
-  const handlePostClick = (e) => {
-    e.preventDefault();
-    console.log('post clicked');
-    console.log(`user: ${user}`)
-  };
-
-  const handlePostEdit = (e) => {
-    e.preventDefault();
-    console.log('edit post');
-  };
 
   const handlePostToggleDraft = async (e) => {
     let userPostsUpdated = [...userPosts];

@@ -91,7 +91,7 @@ function App() {
             onClickLogOut={logout}
           />
           <UserContext.Provider value={user}>
-            <Dashboard />
+            <Dashboard handlePostClick={onClickViewPost}/>
           </UserContext.Provider>
         </div>
       </>
