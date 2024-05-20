@@ -43,6 +43,7 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
       },
       body: JSON.stringify({
         draft: userPostsUpdated[postIndex].draft,
+        purpose: 'toggleDraft',
       }),
     })
       .then((res) => res.json())

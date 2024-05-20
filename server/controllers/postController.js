@@ -104,16 +104,31 @@ exports.postCommentPost = [
 exports.postPut = asyncHandler(async (req, res, next) => {
   const errors = validationResult(req);
 
-  let post = await Post.findById(req.params.postId).exec(); 
-  const postToUpdate = new Post({
-    username: post.username,
-    title: post.title,
-    text: post.text,
-    comments: post.comments,
-    date: post.date,
-    draft: req.body.draft,
-    _id: post._id,
-  });
+  let post = await Post.findById(req.params.postId).exec();
+
+  let postToUpdate;
+
+  if (req.body.purpose === 'edit') {
+    postToUpdate = new Post({
+      username: post.username,
+      title: req.body.title,
+      text: req.body.text,
+      comments: post.comments,
+      date: post.date,
+      draft: req.body.draft,
+      _id: post._id,
+    });
+  } else if (req.body.purpose === 'toggleDraft') {
+    postToUpdate = new Post({
+      username: post.username,
+      title: post.title,
+      text: post.text,
+      comments: post.comments,
+      date: post.date,
+      draft: req.body.draft,
+      _id: post._id,
+    });
+  }
 
   if (!errors.isEmpty()) {
     res.json({ message: 'Post PUT Error'});
