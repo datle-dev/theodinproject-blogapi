@@ -58,7 +58,7 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
 
   const handlePostDelete = async (e) => {
     e.preventDefault();
-    const postId = e.target.getAttribute('postid');s
+    const postId = e.target.getAttribute('postid');
 
     if (window.confirm('Do you want to delete this post?')) {
       await fetch('http://localhost:3000/posts/' + postId, {
