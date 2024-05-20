@@ -102,10 +102,30 @@ exports.postCommentPost = [
 ];
 
 exports.postPut = asyncHandler(async (req, res, next) => {
-  res.json({
-    message: 'Post PUT',
-    postId: `${req.params.postId}`,
+  const errors = validationResult(req);
+
+  let post = await Post.findById(req.params.postId).exec(); 
+  const postToUpdate = new Post({
+    username: post.username,
+    title: post.title,
+    text: post.text,
+    comments: post.comments,
+    date: post.date,
+    draft: req.body.draft,
+    _id: post._id,
   });
+
+  if (!errors.isEmpty()) {
+    res.json({ message: 'Post PUT Error'});
+    return;
+  } else {
+    await Post.findByIdAndUpdate(req.params.postId, postToUpdate, {});
+    res.json({
+      message: 'Post PUT',
+      postId: `${req.params.postId}`,
+      updatedPost: postToUpdate,
+    });
+  }
 });
 
 exports.postCommentPut = asyncHandler(async (req, res, next) => {
