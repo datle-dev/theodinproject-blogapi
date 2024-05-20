@@ -30,7 +30,7 @@ export default function Feed ({ handlePostClick }) {
         <div>
           {posts.map((post) => {
             return (
-              <article>
+              <article key={post._id}>
                 <h2>
                   <a href={'http://localhost:3000/posts/' + post._id} onClick={handlePostClick}>{post.title}</a>
                 </h2>
