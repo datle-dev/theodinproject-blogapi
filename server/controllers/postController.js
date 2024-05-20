@@ -7,9 +7,11 @@ exports.allPostsGet = asyncHandler(async (req, res, next) => {
   let allPosts;
 
   if (Object.hasOwn(req.query, 'username')) {
-    allPosts = await Post.find({ username: req.query.username }).sort({date: -1}).exec()
+    allPosts = await Post.find({ username: req.query.username })
+      .sort({ date: -1 })
+      .exec();
   } else {
-    allPosts = await Post.find().sort({date: -1}).exec();
+    allPosts = await Post.find().sort({ date: -1 }).exec();
   }
 
   res.json(allPosts);
@@ -51,10 +53,10 @@ exports.postPost = [
       return;
     } else {
       await post.save();
-      res.json({ message: 'Post POST Success'} );
+      res.json({ message: 'Post POST Success' });
     }
   }),
-]
+];
 
 exports.postAllCommentsGet = asyncHandler(async (req, res, next) => {
   const allComments = await Comment.find({ postId: req.params.postId }).exec();
@@ -132,7 +134,7 @@ exports.postPut = asyncHandler(async (req, res, next) => {
   }
 
   if (!errors.isEmpty()) {
-    res.json({ message: 'Post PUT Error'});
+    res.json({ message: 'Post PUT Error' });
     return;
   } else {
     await Post.findByIdAndUpdate(req.params.postId, postToUpdate, {});
