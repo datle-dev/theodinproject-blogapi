@@ -90,7 +90,9 @@ function App() {
             onClickCreatePost={onClickCreatePost}
             onClickLogOut={logout}
           />
-          <Dashboard />
+          <UserContext.Provider value={user}>
+            <Dashboard />
+          </UserContext.Provider>
         </div>
       </>
     );
