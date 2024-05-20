@@ -12,7 +12,7 @@ exports.allPostsGet = asyncHandler(async (req, res, next) => {
     allPosts = await Post.find().sort({date: -1}).exec();
   }
 
-  res.json({ message: 'Post All GET', posts: allPosts });
+  res.json(allPosts);
 });
 
 exports.postGet = asyncHandler(async (req, res, next) => {

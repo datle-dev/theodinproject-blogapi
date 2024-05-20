@@ -35,7 +35,7 @@ export default function Dashboard () {
     return (
       <>
         <div>
-          {userPosts.posts.map((post) => {
+          {userPosts.map((post) => {
             return (
               <article key={post._id}>
                 <h2>

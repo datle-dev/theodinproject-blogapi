@@ -28,7 +28,7 @@ export default function Feed ({ handlePostClick }) {
     return (
       <>
         <div>
-          {posts.posts.map((post) => {
+          {posts.map((post) => {
             return (
               <article>
                 <h2>
