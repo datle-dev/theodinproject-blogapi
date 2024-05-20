@@ -49,8 +49,12 @@ export default function Dashboard () {
       method: 'PUT',
       mode: 'cors',
       headers: {
-        Authorization: 'Bearer ' + secret_token,
+        'Authorization': 'Bearer ' + secret_token,
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        draft: userPostsUpdated[postIndex].draft,
+      }),
     })
       .then((res) => res.json())
       .then((resData) => {
