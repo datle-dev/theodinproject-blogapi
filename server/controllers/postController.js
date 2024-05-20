@@ -155,6 +155,7 @@ exports.postCommentPut = asyncHandler(async (req, res, next) => {
 });
 
 exports.postDelete = asyncHandler(async (req, res, next) => {
+  await Post.findByIdAndDelete(req.params.postId);
   res.json({
     message: 'Post DELETE',
     postId: `${req.params.postId}`,

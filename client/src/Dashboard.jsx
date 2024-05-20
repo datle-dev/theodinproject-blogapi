@@ -53,10 +53,40 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
       .catch((err) => console.error(err));
   };
 
-  const handlePostDelete = (e) => {
+  const handlePostDelete = async (e) => {
     e.preventDefault();
+    const postId = e.target.getAttribute('postid');s
+
     if (window.confirm('Do you want to delete this post?')) {
-      console.log('delete post');
+      await fetch('http://localhost:3000/posts/' + postId, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+          'Authorization': 'Bearer ' + secret_token,
+        },
+      })
+        .then((res) => res.json())
+        .then((resData) => {
+          console.log(resData);
+          return;
+        })
+        .catch((err) => console.error(err));
+
+      await fetch('http://localhost:3000/posts?username=' + user, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          Authorization: 'Bearer ' + secret_token,
+        },
+      })
+        .then((res) => res.json())
+        .then((resData) => {
+          console.log(resData);
+          setIsDashboardLoading(false);
+          setUserPosts(resData);
+          return;
+        })
+        .catch((err) => console.error(err));
     }
   };
 
@@ -77,7 +107,7 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
                 <button type="button" onClick={handlePostToggleDraft} postid={post._id}>
                   {post.draft ? 'Publish' : 'Mark as Draft'} 
                 </button>
-                <button type="button" onClick={handlePostDelete}>Delete</button>
+                <button type="button" onClick={handlePostDelete} postid={post._id}>Delete</button>
               </article>
             );
           })}
