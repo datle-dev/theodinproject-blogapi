@@ -22,7 +22,7 @@ export default function CreatePost() {
       },
       body: JSON.stringify({
         username: user,
-        title: 'title',
+        title: data.title,
         text: data.text,
         comments: [],
         date: new Date(),
