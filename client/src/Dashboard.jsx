@@ -74,7 +74,7 @@ export default function Dashboard ({ handlePostClick, handlePostEdit }) {
                   <a href={'http://localhost:3000/posts/' + post._id} onClick={handlePostClick}>{post.title}</a>
                 </h2>
                 <h3>{post.username}</h3>
-                <button type="button" onClick={handlePostEdit}>Edit</button>
+                <button type="button" onClick={handlePostEdit} postid={post._id}>Edit</button>
                 <button type="button" onClick={handlePostToggleDraft} postid={post._id}>
                   {post.draft ? 'Publish' : 'Mark as Draft'} 
                 </button>

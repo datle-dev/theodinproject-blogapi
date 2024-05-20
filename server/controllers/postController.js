@@ -24,6 +24,7 @@ exports.postGet = asyncHandler(async (req, res, next) => {
     title: post.title,
     text: post.text,
     date_formatted: post.date_formatted,
+    draft: post.draft,
   });
 });
 
